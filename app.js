@@ -1,8 +1,19 @@
+'use strict'
 
 const express = require('express');
+const morgan = require('morgan');
+
 const app = express();
 
+const recipesRouter = require('./recipesRouter');
+const dinnerPlansRouter = require('./dinnerPlansRouter');
+
+app.use(morgan('common'));
+
 app.use(express.static('public'));
+
+app.use('/recipes', recipesRouter);
+app.use('/dinnerplans', dinnerPlansRouter);
 
 let server;
 

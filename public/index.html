@@ -1,16 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, intitial-scale=1">
+        <meta name="description" content="Design a dinner plan that works for your family.">
+
+        <title>Dinner Designer</title>
+
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="./css/main.css">
 
     </head>
 
     <body>
-        <form>
-            username :
-            password :
-            <button>log in</button>
-        </form>>
-    </body>
+        <header role="heading" aria-level="1">
 
+        </header>
+
+        <main role="main">
+            <form action="#" id="logInForm">
+                <label for="username">UserName</label>
+                <input type="text" id="username" aria-label="Enter your username" required aria-required="true">
+                <label for="password">Password</label>
+                <input type="password" id="password" aria-label="Enter your password" required aria-required="true">
+                <button id="logInButton">Log In</button>
+            </form>
+
+        </main>
+
+        <footer role="contentinfo">
+            By : Brandon Otto 2018
+        </footer>
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/javascript/index.js"></script>
+    </body>
 
 </html>

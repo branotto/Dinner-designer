@@ -1,18 +1,34 @@
-{ userID: 'john123';
-  priorMeals : 
+let testData = {
+    'userID'    : 'john123',
+    'priorMeals' : [
     {
-        week1: {
-            Sunday : Pizza;  
-            Monday : Tacos
-                };
-        week2 : {
-            Sunday : Hamburgers;
-            Monday : Spaghetti
-
-                };
-        week3 : {
-            Sunday : Meatloaf;
-            Monday : Roast
-        }
-    }
-}
+        'id'        : 'week1',
+        'Sunday'    : 'Pizza',  
+        'Monday'    : 'Tacos',
+        'Tuesday'   : 'Fish',
+        'Wednesday' : 'Hamburgers',
+        'Thursday'  : 'Pasta',
+        'Friday'    : 'Meatloaf',
+        'Saturday'  : 'Steak'
+    },
+    {
+        'id'        : 'week2',
+        'Sunday'    : 'Pizza',  
+        'Monday'    : 'Tacos',
+        'Tuesday'   : 'Fish',
+        'Wednesday' : 'Hamburgers',
+        'Thursday'  : 'Pasta',
+        'Friday'    : 'Meatloaf',
+        'Saturday'  : 'Steak'
+    },
+    {
+        'id'        : 'week3',
+        'Sunday'    : 'Pizza',  
+        'Monday'    : 'Tacos',
+        'Tuesday'   : 'Fish',
+        'Wednesday' : 'Hamburgers',
+        'Thursday'  : 'Pasta',
+        'Friday'    : 'Meatloaf',
+        'Saturday'  : 'Steak'
+    }]
+};

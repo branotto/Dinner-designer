@@ -18,12 +18,19 @@ router.post('/', jsonParser, (req, res) =>
 
 router.put('/:id', jsonParser, (req, res) =>
     {
+        //get the object for the user
+        //pass that object and get the meal
+        //get username.priormeal.${id};
+        //edit based on the new object
+        //respond
         res.send("Hello Dinner Plans");
     });
 
 
 router.delete('/:id', jsonParser, (req, res) =>
     {
+        //get the object for the user
+        //delete username.priormeals.${id}
         res.send("Hello Dinner Plans");
     });
 

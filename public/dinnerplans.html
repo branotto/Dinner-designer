@@ -1,3 +1,59 @@
-<html>
-    <p>hello dinnerplans</p>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, intitial-scale=1">
+        <meta name="description" content="Review and Create your dinner plans.">
+
+        <title>Dinner Plans</title>
+
+        <!-- Stylesheets-->
+        <link rel="stylesheet" href="./css/main.css">
+
+    </head>
+
+    <body>
+        <header role="heading" aria-level="1">
+            <h1>Dinner Designer</h1>
+        </header>
+
+        <main role="main">
+            <form action="#" id="generatePlanForm">
+                <fieldset role="radiogroup" name="number of meals">
+                    <legend>How many meals do you want generated?</legend>
+                        <label for="fiveDays">
+                            <input type="radio" role="radio" id="fiveDays" name="numberDays" value="5 Days" required autofocus>
+                            <span>5 Days</span>
+                        </label>
+
+                        <label for="sevenDays">
+                            <input type="radio" role="radio" id="sevenDays" name="numberDays" value="7 Days" required>
+                            <span>7 Days</span>
+                        </label>
+                </fieldset>
+                <button type="submit">Design my Dinners</button>
+            </form>
+
+            <section>
+                <div id="priorMeals">
+
+                </div>
+            </section>
+
+            <section>
+                <div id="recipePreferences">
+
+                </div>
+            </section>
+
+        </main>
+
+        <footer>
+            By: Brandon Otto 2018
+        </footer>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/javascript/dinnerplans.js"></script>
+   
+    </body>
+
 </html>

@@ -65,23 +65,28 @@ function displayRecipePreferences(data)
     for (index in data.recipePreferences)
     {
         preferences += `
-            <div id="${data.recipePreferences[index].id}">
+            <div>
                 <h2>${data.recipePreferences[index].name}</h2>
+                <label class="hidden" for="name" placeholder="${data.recipePreferences[index].name}> <input id="name" type="text" class="hidden">
                 <p>Recipe Frequency: ${data.recipePreferences[index].frequency}</p>
+                <label class="hidden" for="frequency" placeholder="${data.recipePreferences[index].frequency}"> <input id="frequency" type="text" class="hidden">
                 <p>Day Preference: ${data.recipePreferences[index].day}</p>
-                <button>Edit</button> <button>Delete</button>
+                <label class="hidden" for="day" placeholder="${data.recipePreferences[index].day}"> <input id="day" type="text" class="hidden">
+                <button data-recipe-id="${data.recipePreferences[index].id}" class="hidden">Save</button> <button>Edit</button> <button>Delete</button>
             </div>`;
     }
 
     preferences += `</div>`;
 
     $('#recipePreferences').append(preferences);
+
+    //handle recipe button clicks()
 }
 
 //request recipe preferences from database
 function getRecipePreferences(callback)
 {
-    
+    //replace with getJson when database is implemented.
     callback(MOCK_RECIPE_DATA);
 }
 
@@ -98,7 +103,7 @@ function pageLoad()
 {
     
     requestAndDisplayRecipePreferences();
-    
+    //requestAndDisplayPriorMeals();
 }
 
 (pageLoad());

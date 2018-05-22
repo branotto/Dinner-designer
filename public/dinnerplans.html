@@ -21,29 +21,40 @@
             <form action="#" id="generatePlanForm">
                 <fieldset role="radiogroup" name="number of meals">
                     <legend>How many meals do you want generated?</legend>
-                        <label for="fiveDays">
+                        <label for="fiveDays">5 Days
                             <input type="radio" role="radio" id="fiveDays" name="numberDays" value="5 Days" required autofocus>
-                            <span>5 Days</span>
                         </label>
 
-                        <label for="sevenDays">
+                        <label for="sevenDays">7 Days
                             <input type="radio" role="radio" id="sevenDays" name="numberDays" value="7 Days" required>
-                            <span>7 Days</span>
                         </label>
                 </fieldset>
                 <button type="submit">Design my Dinners</button>
             </form>
 
             <section>
-                <div id="priorMeals">
-
-                </div>
+                <ul id="priorMeals">
+                    
+                </ul>
             </section>
 
             <section>
-                <div id="recipePreferences">
+                <form action="#" id="addRecipe">
+                    <label for="newRecipeName">Name:
+                        <input type="text" id="newRecipeName">
+                    </label>
+                    <label for="newRecipeFrequency">Frequency:
+                        <input type="text" id="newRecipeFrequency">
+                    </label>
+                    <label for="newRecipeDay">Day Preference:
+                        <input type="text" id="newRecipeDay">
+                    </label>
+                    <button id="newRecipe">Add New Recipe</button>
+                </form>
+                
+                <ul id="recipePreferences">
 
-                </div>
+                </ul>
             </section>
 
         </main>

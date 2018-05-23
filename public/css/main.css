@@ -3,9 +3,5 @@ ul li .edit {
 }
 
 ul li.edit .edit {
-    display : initial;
-}
-
-ul li.edit .noEdit {
-    display : none;
+    display : block;
 }

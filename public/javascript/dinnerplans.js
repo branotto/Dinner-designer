@@ -60,8 +60,9 @@ function editRecipe()
 {
     let $recipes = $('#recipePreferences');
 
-    $recipes.on('click', '.editRecipe', ()=>
+    $recipes.on('click', '#editRecipe', function()
     {
+    
         let $li = $(this).closest('li');
 
         $li.find('input.name').val( $li.find('label.name').html() );
@@ -71,9 +72,29 @@ function editRecipe()
        
     });
 
-    $recipes.on('click', '.cancelEdit', ()=>
+    $recipes.on('click', '#cancelEdit', function()
     {
         let $li = $(this).closest('li');
+        $li.removeClass('edit');
+       
+    });
+
+    $recipes.on('click', '#saveEdit', function()
+    {
+        let $li = $(this).closest('li');
+        
+        /*save for posting to API
+        let editRecipe =
+        {
+            "name" : $li.find('input.name').val(),
+            "frequency" : $li.find('input.frequency').val(),
+            "day" : $li.find('input.day').val()
+        } 
+        */
+        console.log($li.find('input.name').val());
+       $li.find('label.name').val( $li.find('input.name').html() );
+
+
         $li.removeClass('edit');
        
     });
@@ -83,11 +104,9 @@ function deleteRecipe()
 {
     let $recipes = $('#recipePreferences');
 
-    $recipes.on('click', '#delete', ()=>
-    {
-        console.log("Delete Pressed!");
-      
-        let $li = $(this).parent();
+    $recipes.on('click', '#delete', function()
+    {   
+        let $li = $(this).closest('li');
 
         //remove when API is implemented
         $li.remove();
@@ -153,25 +172,23 @@ function displayRecipe(recipe) {
     let newRecipe = `
     <li>
         <p>Name:
-            <label class="noEdit name" for="name">${recipe.name} 
-                <input id="name" type="text" class="edit name">
-            </label>
+            <label id="name" class="noEdit" for="name">${recipe.name}</label>
+            <input id="name" type="text" class="edit">
         </p>
         
         <p>Frequency:
-            <label class="noEdit frequency" for="frequency"> ${recipe.frequency}
-                <input id="frequency" type="text" class="edit frequency">
-            <label>
+            <label id="frequency" class="noEdit" for="frequency"> ${recipe.frequency}</label>
+            <input id="frequency" type="text" class="edit">
         </p>
         
         <p>Day Preference:
-            <label class="noEdit day" for="day">${recipe.day}
-                <input id="day" type="text" class="edit day">
-            </label>
+            <label id="day" class="noEdit" for="day">${recipe.day}</label>
+            <input id="day" type="text" class="edit">
         </p>
-        <button class="saveEdit edit">Save</button>
-        <button class="cancelEdit edit">Cancel</button>  
-        <button class="editRecipe noEdit">Edit</button> 
+        
+        <button class="edit" id="saveEdit">Save</button>
+        <button class="edit" id="cancelEdit">Cancel</button>  
+        <button class="noEdit" id="editRecipe">Edit</button> 
         <button data-id="${recipe.id}" id="delete">Delete</button>
     </li>`;
 
@@ -186,8 +203,6 @@ function displayRecipePreferences(data)
     {
         displayRecipe(data.recipePreferences[index]);
     }
-
-    //handle recipe button clicks()
 }
 
 //request recipe preferences from database
@@ -216,8 +231,7 @@ function handleRecipes()
 
 }
 
-//when the page load request meal history and 
-//recipe preferences
+//when the page load request meal history and recipe preferences
 function pageLoad()
 {
     handleRecipes();

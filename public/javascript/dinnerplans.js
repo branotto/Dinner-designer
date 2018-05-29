@@ -1,3 +1,37 @@
+const MOCK_MEAL_DATA = {
+    "mealPlans" : [
+        {
+            'id'        : '1',
+            'Sunday'    : 'Pizza',  
+            'Monday'    : 'Tacos',
+            'Tuesday'   : 'Fish',
+            'Wednesday' : 'Hamburgers',
+            'Thursday'  : 'Pasta',
+            'Friday'    : 'Meatloaf',
+            'Saturday'  : 'Steak'
+        },
+        {
+            'id'        : '2',
+            'Sunday'    : 'Spagetti',  
+            'Monday'    : 'Pulled Pork',
+            'Tuesday'   : 'Salmon',
+            'Wednesday' : 'Sausages',
+            'Thursday'  : 'Ravioli',
+            'Friday'    : 'Shepheards Pie',
+            'Saturday'  : 'Filet'
+        },
+        {
+            'id'        : '3',
+            'Sunday'    : 'Chinese Takeout',  
+            'Monday'    : 'Lasagna',
+            'Tuesday'   : 'Fish Sticks',
+            'Wednesday' : 'Salmon Cakes',
+            'Thursday'  : 'Fried Chicken',
+            'Friday'    : 'Sloppy Joes',
+            'Saturday'  : 'Chicken Bacon Casserole'
+        }]
+    };
+
 const MOCK_RECIPE_DATA = {
     "recipePreferences" : [
         {
@@ -168,6 +202,7 @@ function addNewRecipe()
     })
 }
 
+//display html view of recipes
 function displayRecipe(recipe) {
     let newRecipe = `
     <li>
@@ -195,6 +230,40 @@ function displayRecipe(recipe) {
     $('#recipePreferences').append(newRecipe);
 }
 
+//displays html view of meal plans
+function displayMealPlan(mealPlan) {
+    let newMeal = `
+    <li>
+        <p>Week ${mealPlan.id}
+            <ul>
+                <li>
+                    <p>Sunday: ${mealPlan.Sunday}</p>
+                </li>
+                <li>
+                    <p>Monday: ${mealPlan.Monday}</p>
+                </li>
+                <li>
+                    <p>Tuesday: ${mealPlan.Tuesday}</p>
+                </li>
+                <li>
+                    <p>Wednesday: ${mealPlan.Wednesday}</p>
+                </li>
+                <li>
+                    <p>Thursday: ${mealPlan.Thursday}</p>
+                </li>
+                <li>
+                    <p>Friday: ${mealPlan.Friday}</p>
+                </li>
+                <li>
+                    <p>Saturday: ${mealPlan.Saturday}</p>
+                </li>
+            </ul>
+        </p>
+    </li>`;
+
+    $('#priorMeals').append(newMeal);
+}
+
 //display the recipe preferences returned from the 
 //database
 function displayRecipePreferences(data)
@@ -205,11 +274,28 @@ function displayRecipePreferences(data)
     }
 }
 
+//display the historical meals returned from the 
+//database
+function displayMealPlans(data)
+{
+    for (index in data.mealPlans)
+    {
+        displayMealPlan(data.mealPlans[index]);
+    }
+}
+
 //request recipe preferences from database
 function getRecipePreferences(callback)
 {
     //replace with getJson when database is implemented.
     callback(MOCK_RECIPE_DATA);
+}
+
+//request prior meal plans from database
+function getMealPlans(callback)
+{
+    //replace with getJson when database is implemented.
+    callback(MOCK_MEAL_DATA);
 }
 
 //handle the request and display of recipes
@@ -219,6 +305,14 @@ function requestAndDisplayRecipePreferences()
     getRecipePreferences(displayRecipePreferences);
 }   
 
+//handle the request and display of Prior MealPlans
+function requestAndDisplayMealPlanHistory()
+{
+    
+    getMealPlans(displayMealPlans);
+} 
+
+//main handler function for recipe functionality
 function handleRecipes()
 {
     requestAndDisplayRecipePreferences();
@@ -231,12 +325,21 @@ function handleRecipes()
 
 }
 
+//main handler function for meal plan functionality
+function handleMealPlans()
+{
+    requestAndDisplayMealPlanHistory();
+
+    generateNewMealPlan();
+
+}
+
 //when the page load request meal history and recipe preferences
 function pageLoad()
 {
     handleRecipes();
     
-    //requestAndDisplayPriorMeals();
+    handleMealPlans();
 
     
 }

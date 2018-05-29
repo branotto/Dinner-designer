@@ -1,3 +1,57 @@
-<html>
-    <p>hello dinnerplans</p>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, intitial-scale=1">
+        <meta name="description" content="Review and Create your dinner plans.">
+
+        <title>Dinner Plans</title>
+
+        <!-- Stylesheets-->
+        <link rel="stylesheet" href="./css/main.css">
+
+    </head>
+
+    <body>
+        <header role="heading" aria-level="1">
+            <h1>Dinner Designer</h1>
+            <button type="submit">Design my Dinners</button>
+        </header>
+
+        <main role="main">
+            <section>
+                <ul id="priorMeals">
+                    
+                </ul>
+            </section>
+
+            <section>
+                <form action="#" id="addRecipe">
+                    <label for="newRecipeName">Name:
+                        <input type="text" id="newRecipeName" required="true">
+                    </label>
+                    <label for="newRecipeFrequency">Frequency:
+                        <input type="text" id="newRecipeFrequency" required="true">
+                    </label>
+                    <label for="newRecipeDay">Day Preference:
+                        <input type="text" id="newRecipeDay" required="true">
+                    </label>
+                    <button id="newRecipe">Add New Recipe</button>
+                </form>
+                
+                <ul id="recipePreferences">
+
+                </ul>
+            </section>
+
+        </main>
+
+        <footer>
+            By: Brandon Otto 2018
+        </footer>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/javascript/dinnerplans.js"></script>
+   
+    </body>
+
 </html>

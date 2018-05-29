@@ -1,0 +1,7 @@
+ul li .edit {
+    display : none;
+}
+
+ul li.edit .edit {
+    display : block;
+}

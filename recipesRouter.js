@@ -13,7 +13,14 @@ router.get('/', (req, res) =>
 
 router.post('/', jsonParser, (req, res) =>
     {
-       res.send("Hello Recipes");
+        let newRecipe = 
+        {
+            "name" : req.name,
+            "frequency" : req.frequency,
+            "day" : req.day
+        }
+
+        res.json(newRecipe);
     });    
 
 router.put('/:id', jsonParser, (req, res) =>

@@ -6,9 +6,13 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
+const {RecipePreferences} = require('./models/recipesModel');
+
+
+//GET requests will return all current recipes
 router.get('/', (req, res) =>
     {
-        res.send("Hello Recipes");
+        res.json(RecipePreferences.get());
     });
 
 router.post('/', jsonParser, (req, res) =>

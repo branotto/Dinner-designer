@@ -171,7 +171,7 @@ function addNewRecipe()
     let $frequency = $('#newRecipeFrequency');
     let $day = $('#newRecipeDay');
 
-    $('#newRecipe').on('click', (event) =>
+    $('#addRecipe').on('submit', function(event)
     {
         event.preventDefault();
         let recipe = 
@@ -183,6 +183,10 @@ function addNewRecipe()
 
         //replace with AJAX when API is ready
         displayRecipe(recipe);
+
+        $name.val('');
+        $frequency.val('');
+        $day.val('');
 
         /* use when API is ready
         $.ajax({
@@ -200,6 +204,11 @@ function addNewRecipe()
         })
         */
     })
+}
+
+function generateNewMealPlan()
+{
+
 }
 
 //display html view of recipes

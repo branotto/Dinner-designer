@@ -4,7 +4,13 @@ const mongoose = require('mongoose');
 const recipePreferencesSchema = mongoose.Schema(
     {
         userId : {type: String, required : true},
-        recipes : [{ id: String, name: String, frequeny: String, day: String}]
+        recipes : [
+            { 
+                id : String, 
+                name : String, 
+                frequeny : String, 
+                day : String
+            }]
     }); 
 
 //serialize instance method for generating a return object

@@ -12,7 +12,16 @@ const {RecipePreferences} = require('./models/recipesModel');
 //GET requests will return all current recipes
 router.get('/', (req, res) =>
     {
-        res.json(RecipePreferences.get());
+        RecipePreferences
+        .find()
+        .then(RecipePreferences => res.json(
+            RecipePreferences.map(recipePreference => recipePreference.serialize()
+    )))
+        .catch(err =>
+        {
+            console.error(err);
+            res.status(500).json({message : 'Internal Server Error'});
+        });   
     });
 
 router.post('/', jsonParser, (req, res) =>

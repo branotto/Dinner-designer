@@ -25,11 +25,11 @@ app.use('/dinnerplans', dinnerPlansRouter);
 let server;
 
 //starts the server and returns a Promise.
-function runServer(databseUrl, port = PORT) 
+function runServer(databaseUrl, port = PORT) 
 {
     return new Promise((resolve, reject) => 
     {
-      mongoose.connect(DATABASE_URL, err =>
+      mongoose.connect(databaseUrl, err =>
       {
         if(err)
         {
@@ -39,6 +39,7 @@ function runServer(databseUrl, port = PORT)
         server = app.listen(port, () => 
         {
           console.log(`Your app is listening on port ${port}`);
+          console.log(`Using DB URL ${databaseUrl}`);
           resolve();
         }).on('error', err => 
        {

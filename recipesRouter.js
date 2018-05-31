@@ -13,10 +13,10 @@ const {RecipePreferences} = require('./models/recipesModel');
 router.get('/', (req, res) =>
     {
         RecipePreferences
-        .find()
+        .find({userID :"11111"})
         .then(RecipePreferences => res.json(
-            RecipePreferences.map(recipePreference => recipePreference.serialize()
-    )))
+            RecipePreferences.map(recipePreference => recipePreference.serialize())
+        ))
         .catch(err =>
         {
             console.error(err);

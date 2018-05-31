@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const recipePreferencesSchema = mongoose.Schema(
     {
         userId : {type: String, required : true},
-        recipes : [
+        recipePreferences : [
             { 
                 id : String, 
                 name : String, 
@@ -17,10 +17,10 @@ const recipePreferencesSchema = mongoose.Schema(
 recipePreferencesSchema.methods.serialize = function()
 {
     return {
-        recipes : this.recipes
+        recipePreferences : this.recipePreferences
     };
 }
 
-const RecipePreferences = mongoose.model('RecipePreferences', recipePreferencesSchema);
+const RecipePreferences = mongoose.model('recipes', recipePreferencesSchema);
 
 module.exports = {RecipePreferences};

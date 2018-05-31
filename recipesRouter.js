@@ -26,14 +26,37 @@ router.get('/', (req, res) =>
 
 router.post('/', jsonParser, (req, res) =>
     {
-        let newRecipe = 
+        const requiredFields = ['name', 'frequency', 'day'];
+        for( let i = 0; i < requiredFields.length; i++)
         {
-            "name" : req.name,
-            "frequency" : req.frequency,
-            "day" : req.day
+            const field = requiredFields[i];
+            if(!(field in req.body))
+            {
+                const message = `Missing ${field} in request body.`;
+                console.error(message);
+                return res.status(400).send(message);
+            }
         }
 
-        res.json(newRecipe);
+        let newRecipePreference = 
+            {
+                name : req.body.name,
+                frequency : req.body.frequency,
+                day : req.body.day
+            };
+
+            console.log(newRecipePreference);
+
+        RecipePreferences
+        .findOneAndUpdate( 
+            {userID : "11111"},
+            { $push : { recipePreferences : newRecipePreference } } )
+        .then(newRecipePreference => res.status(201).json(newRecipePreference.serialize()))
+        .catch(err =>
+        {
+            console.error(err);
+            res.status(500).json({message : 'Internal server error'});
+        });
     });    
 
 router.put('/:id', jsonParser, (req, res) =>

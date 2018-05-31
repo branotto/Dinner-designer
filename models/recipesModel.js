@@ -8,7 +8,7 @@ const recipePreferencesSchema = mongoose.Schema(
             { 
                 id : String, 
                 name : String, 
-                frequeny : String, 
+                frequency : String, 
                 day : String
             }]
     }); 

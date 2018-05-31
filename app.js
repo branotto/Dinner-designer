@@ -39,7 +39,6 @@ function runServer(databaseUrl, port = PORT)
         server = app.listen(port, () => 
         {
           console.log(`Your app is listening on port ${port}`);
-          console.log(`Using DB URL ${databaseUrl}`);
           resolve();
         }).on('error', err => 
        {

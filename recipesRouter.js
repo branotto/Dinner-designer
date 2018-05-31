@@ -1,5 +1,7 @@
 'use strict'
 
+const TEST_USER_ID = '11111';
+
 const express = require('express');
 const router = express.Router();
 
@@ -13,7 +15,7 @@ const {RecipePreferences} = require('./models/recipesModel');
 router.get('/', (req, res) =>
     {
         RecipePreferences
-        .find({userID :"11111"})
+        .find({userID : TEST_USER_ID})
         .then(RecipePreferences => res.json(
             RecipePreferences.map(recipePreference => recipePreference.serialize())
         ))
@@ -49,7 +51,7 @@ router.post('/', jsonParser, (req, res) =>
 
         RecipePreferences
         .findOneAndUpdate( 
-            {userID : "11111"},
+            {userID : TEST_USER_ID},
             { $push : { recipePreferences : newRecipePreference } } )
         .then(newRecipePreference => res.status(201).json(newRecipePreference.serialize()))
         .catch(err =>
@@ -61,13 +63,42 @@ router.post('/', jsonParser, (req, res) =>
 
 router.put('/:id', jsonParser, (req, res) =>
     {
-        res.send("Hello Recipes");
-    });
+        if ( ! (req.params.id && req.body.id && req.params.id === req.body.id))
+        {
+            const message =
+            `Request path id ${req.params.id} and request body id ${req.body.id} must match.`;
+            console.error(message);
+            return res.status(400).json({message : message});
+        }
+
+        const toUpdate = {};
+        const updateableFields = ['name', 'frequency', 'day'];
+
+        updateableFields.forEach( field =>
+        {
+            if(field in req.body)
+            {
+                toUpdate[field] = req.body[field];
+            }
+        });
+
+        RecipePreferences
+        .update( 
+            {
+                userID : TEST_USER_ID, "recipePreferences._id" : req.params.id
+            },{
+                $set : { "recipePreferences.$" : toUpdate }
+            })
+            .then(recipePreference => res.status(200).json(recipePreference.serialize()))
+            .catch(err => res.status(500).json({message : 'Internal Server Error'}));
+        });
 
 
 router.delete('/:id', jsonParser, (req, res) =>
     {
-        res.send("Hello Recipes");
+        RecipePreferences
+        //remove the subdocument with the matching userID and req.params.id
+        
     });
 
 module.exports = router;

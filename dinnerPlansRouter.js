@@ -6,6 +6,8 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
+const {DinnerPlan} = require('./models/dinnerPlanModel');
+
 router.get('/', (req, res) =>
     {
         res.send("Hello Dinner Plans");

@@ -2,11 +2,12 @@ const mongoose = require('mongoose');
 
 //Dinner plan schema
 
-const dinnerPlanSchema = mongoose.Schema(
+const dinnerPlansSchema = mongoose.Schema(
     {
         userId : {type: String, required : true},
         priorMeals : [
             {
+                id : String,
                 Sunday : String,
                 Monday : String,
                 Tuesday : String,
@@ -15,17 +16,16 @@ const dinnerPlanSchema = mongoose.Schema(
                 Friday : String,
                 Saturday : String
             }]
-
     });
 
 //serialize instance method for generating return object
-dinnerPlanSchema.methods.serialize = function()
+dinnerPlansSchema.methods.serialize = function()
 {
     return {
         priorMeals : this.priorMeals
     };
 }
 
-const DinnerPlans = mongoose.model('dinnerPlans', dinnerPlanSchema);
+const DinnerPlans = mongoose.model('dinnerPlans', dinnerPlansSchema);
 
 module.exports = {DinnerPlans};

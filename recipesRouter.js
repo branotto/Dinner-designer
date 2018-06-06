@@ -26,6 +26,7 @@ router.get('/', (req, res) =>
         });   
     });
 
+//POST adds a new recipe to the users recipe preference array 
 router.post('/', jsonParser, (req, res) =>
     {
         const requiredFields = ['name', 'frequency', 'day'];
@@ -53,7 +54,7 @@ router.post('/', jsonParser, (req, res) =>
         .findOneAndUpdate( 
             {userID : TEST_USER_ID},
             { $push : { recipePreferences : newRecipePreference } } )
-        .then(newRecipePreference => res.status(201).json(newRecipePreference.serialize()))
+        .then(res.status(201).json(newRecipePreference))
         .catch(err =>
         {
             console.error(err);

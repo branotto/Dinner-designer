@@ -1,5 +1,7 @@
 'use strict'
 
+const TEST_USER_ID = '11111';
+
 const express = require('express');
 const router = express.Router();
 
